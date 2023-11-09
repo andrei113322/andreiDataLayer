@@ -36,9 +36,19 @@ namespace ViewModel
             return list;
         }
 
-        public User SelectById(int id)
+        //public User SelectById(int id)
+        //{
+        //    command.CommandText = "SELECT * FROM USERS WHERE id=" + id;
+        //    UserList list = new UserList(ExecuteCommand());
+        //    if (list.Count == 0)
+        //        return null;
+        //    return list[0];
+        //}
+
+        public User SelectByEmail(string email)
         {
-            command.CommandText = "SELECT * FROM USERS WHERE id=" + id;
+            command.CommandText = "SELECT * FROM USERS WHERE EMAIL = @Email";
+            command.Parameters.AddWithValue("@Email", email);
             UserList list = new UserList(ExecuteCommand());
             if (list.Count == 0)
                 return null;

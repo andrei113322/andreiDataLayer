@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ViewModel;
 
 namespace UserGUI
 {
@@ -19,9 +21,13 @@ namespace UserGUI
     /// </summary>
     public partial class Login : Window
     {
+        User user;
+        UsersDB userDB;
         public Login()
         {
             InitializeComponent();
+            user = new User();
+            userDB = new UsersDB();
         }
 
         private void textEmail_MouseDown(object sender, MouseButtonEventArgs e)
@@ -62,7 +68,16 @@ namespace UserGUI
         {
             if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPassword.Password))
             {
-                MessageBox.Show("Succseful");
+                user = userDB.SelectByEmail(txtEmail.Text);
+                if ((user != null) && (user.Password == txtPassword.Password))
+                {
+                    MessageBox.Show("Succseful");
+                }
+                else
+                {
+                    txtEmail.Text = "";
+                    txtPassword.Password = "";
+                }
             }
         }
 
@@ -77,6 +92,13 @@ namespace UserGUI
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void signUpButtonClick(object sender, RoutedEventArgs e)
+        {
+            SignUp signUpWin = new SignUp();
+            signUpWin.ShowDialog();
+            this.Close();
         }
     }
 }
