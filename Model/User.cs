@@ -1,45 +1,91 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Model
 {
-    public class User:BaseEntity
+    [DataContract]
+    public class User : BaseEntity
     {
         protected string userName;
-        public string UserName { get { return userName; } set { userName = value; } }
+
+        [DataMember]
+        public string UserName
+        {
+            get { return userName; }
+            set { userName = value; }
+        }
 
         protected string firstName;
-        public string FirstName { get { return firstName; } set { firstName = value; } }
+
+        [DataMember]
+        public string FirstName
+        {
+            get { return firstName; }
+            set { firstName = value; }
+        }
 
         protected string secondName;
-        public string SecondName { get { return secondName; } set { secondName = value; } }
+
+        [DataMember]
+        public string SecondName
+        {
+            get { return secondName; }
+            set { secondName = value; }
+        }
 
         protected string password;
-        public string Password { get { return password; } set { password = value; } }
+
+        [DataMember]
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
+        }
 
         protected DateTime birthDate;
-        public DateTime BirthDate { get { return birthDate; } set { birthDate = value; } }
+
+        [DataMember]
+        public DateTime BirthDate
+        {
+            get { return birthDate; }
+            set { birthDate = value; }
+        }
 
         protected string email;
-        public string Email { get { return email; } set { email = value; } }
+
+        [DataMember]
+        public string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
 
         protected bool isAdmin;
-        public bool IsAdmin { get { return isAdmin; } set { isAdmin = value; } }
+
+        [DataMember]
+        public bool IsAdmin
+        {
+            get { return isAdmin; }
+            set { isAdmin = value; }
+        }
     }
 
+    [CollectionDataContract]
     public class UserList : List<User>
     {
-        //בנאי ברירת מחדל - אוסף ריק
+        // Default constructor - an empty collection
         public UserList() { }
-        //המרה אוסף גנרי לרשימת משתמשים
+
+        // Conversion from a generic collection to a list of Users
         public UserList(IEnumerable<User> list)
             : base(list) { }
-        //המרה מטה מטיפוס בסיס לרשימת משתמשים
+
+        // Conversion from a list of BaseEntity to UserList
         public UserList(IEnumerable<BaseEntity> list)
             : base(list.Cast<User>().ToList()) { }
     }
-
 }
