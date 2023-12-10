@@ -31,6 +31,7 @@ namespace WcfService
 
         [OperationContract] UserList SelectAllUsers();
         [OperationContract] User SelectUserByEmail(string email);
+        [OperationContract] User SelectUserByUserName(string userName);
         [OperationContract] void InsertUser(User user);
         [OperationContract] void UpdateUser(User user);
         [OperationContract] void DeleteUser(User user);

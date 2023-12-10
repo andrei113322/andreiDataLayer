@@ -114,6 +114,13 @@ namespace WcfService
             return list;
         }
 
+        public User SelectUserByUserName(string userName)
+        {
+            UsersDB db = new UsersDB();
+            User list = db.SelectByUserName(userName);
+            return list;
+        }
+
         public void UpdateCoin(Coin coin)
         {
             CoinDB db = new CoinDB();

@@ -47,9 +47,21 @@ namespace ViewModel
 
         public User SelectByEmail(string email)
         {
-            command.CommandText = "SELECT * FROM USERS WHERE EMAIL = @Email";
-            command.Parameters.AddWithValue("@Email", email);
-            UserList list = new UserList(ExecuteCommand());
+            command.CommandText = $"SELECT * FROM USERS WHERE (EMAIL = '{email}');";
+            //command.Parameters.AddWithValue("@Email", email);
+            string cammand = command.CommandText;
+            UserList list = new UserList(base.ExecuteCommand());
+            if (list.Count == 0)
+                return null;
+            return list[0];
+        }
+
+        public User SelectByUserName(string userName)
+        {
+            command.CommandText = $"SELECT * FROM USERS WHERE (USERNAME = '{userName}');";
+            //command.Parameters.AddWithValue("@Email", email);
+            string cammand = command.CommandText;
+            UserList list = new UserList(base.ExecuteCommand());
             if (list.Count == 0)
                 return null;
             return list[0];
@@ -58,16 +70,8 @@ namespace ViewModel
         public void InsertUser(User newUser)
         {
             // Assuming you have appropriate database columns for each property
-            command.CommandText = "INSERT INTO USERS (USERNAME, FIRSTNAME, SECONDNAME, PASSWORD, BIRTHDATE, EMAIL, ISADMIN) VALUES (@UserName, @FirstName, @SecondName, @Password, @BirthDate, @Email, @IsAdmin)";
-
-            // Add parameters to prevent SQL injection
-            command.Parameters.AddWithValue("@UserName", newUser.UserName);
-            command.Parameters.AddWithValue("@FirstName", newUser.FirstName);
-            command.Parameters.AddWithValue("@SecondName", newUser.SecondName);
-            command.Parameters.AddWithValue("@Password", newUser.Password);
-            command.Parameters.AddWithValue("@BirthDate", newUser.BirthDate);
-            command.Parameters.AddWithValue("@Email", newUser.Email);
-            command.Parameters.AddWithValue("@IsAdmin", newUser.IsAdmin);
+            command.CommandText = $"INSERT INTO USERS (USERNAME, FIRSTNAME, SECONDNAME, [PASSWORD], BIRTHDATE, EMAIL, ISADMIN) VALUES ('{newUser.UserName}', '{newUser.FirstName}', '{newUser.SecondName}', '{newUser.Password}', #{newUser.BirthDate}#, '{newUser.Email}', {newUser.IsAdmin})";
+            string cammand = command.CommandText;
 
             // Execute the INSERT command
             base.ExecuteCRUD();
