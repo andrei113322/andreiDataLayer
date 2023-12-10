@@ -44,10 +44,7 @@ namespace ViewModel
             command.CommandText = "INSERT INTO LOG (TIME, [P&L], ACTION, USERID) VALUES (@Time, @PAndl, @Action, @UserID)";
 
             // Add parameters to prevent SQL injection
-            command.Parameters.AddWithValue("@Time", newLog.Time);
-            command.Parameters.AddWithValue("@PAndl", newLog.PAndl);
-            command.Parameters.AddWithValue("@Action", newLog.Action);
-            command.Parameters.AddWithValue("@UserID", newLog.UserId); // Assuming USERID is the column in your database for user ID
+            LoadParameters(newLog);
             // Execute the INSERT command
             base.ExecuteCRUD();
         }
@@ -58,11 +55,7 @@ namespace ViewModel
             command.CommandText = "UPDATE LOG SET TIME = @Time, [P&L] = @PAndl, ACTION = @Action, USERID = @UserID WHERE ID = @ID";
 
             // Add parameters to prevent SQL injection
-            command.Parameters.AddWithValue("@Time", updatedLog.Time);
-            command.Parameters.AddWithValue("@PAndl", updatedLog.PAndl);
-            command.Parameters.AddWithValue("@Action", updatedLog.Action);
-            command.Parameters.AddWithValue("@UserID", updatedLog.UserId);
-            command.Parameters.AddWithValue("@ID", updatedLog.ID); // Assuming ID is the primary key column
+            LoadParameters(updatedLog);
 
             // Execute the UPDATE command
             base.ExecuteCRUD();
@@ -78,6 +71,17 @@ namespace ViewModel
 
             // Execute the DELETE command
             base.ExecuteCRUD();
+        }
+
+        protected override void LoadParameters(BaseEntity entity)
+        {
+            Log log = entity as Log;
+
+            command.Parameters.AddWithValue("@Time", log.Time);
+            command.Parameters.AddWithValue("@PAndl", log.PAndl);
+            command.Parameters.AddWithValue("@Action", log.Action);
+            command.Parameters.AddWithValue("@UserID", log.UserId);
+            command.Parameters.AddWithValue("@ID", log.ID);
         }
     }
 }
