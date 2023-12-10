@@ -18,6 +18,8 @@ namespace ViewModel
         protected abstract BaseEntity NewEntity();
         protected abstract BaseEntity CreateModel(BaseEntity entity);
 
+        protected abstract void LoadParameters(BaseEntity entity);
+
         protected static string connectionString;
         public BaseDB()
         {

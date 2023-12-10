@@ -52,16 +52,7 @@ namespace ViewModel
             command.CommandText = "INSERT INTO ORDERHISTORY (SYMBOL, SIDE, TYPE, QTY, PRICE, FILLPRICE, STATUS, PLACINGTIME, CLOSINGTIME, USERID) VALUES (@Symbol, @Side, @Type, @Qty, @Price, @FillPrice, @Status, @PlacingTime, @ClosingTime, @UserID)";
 
             // Add parameters to prevent SQL injection
-            command.Parameters.AddWithValue("@Symbol", newOrderHistory.Symbol);
-            command.Parameters.AddWithValue("@Side", newOrderHistory.Side);
-            command.Parameters.AddWithValue("@Type", newOrderHistory.Type);
-            command.Parameters.AddWithValue("@Qty", newOrderHistory.Qty);
-            command.Parameters.AddWithValue("@Price", newOrderHistory.Price);
-            command.Parameters.AddWithValue("@FillPrice", newOrderHistory.FillPrice);
-            command.Parameters.AddWithValue("@Status", newOrderHistory.Status);
-            command.Parameters.AddWithValue("@PlacingTime", newOrderHistory.Placingtime);
-            command.Parameters.AddWithValue("@ClosingTime", newOrderHistory.ClosingTime);
-            command.Parameters.AddWithValue("@UserID", newOrderHistory.UserId);
+            LoadParameters(newOrderHistory);
 
             // Execute the INSERT command
             base.ExecuteCRUD();
@@ -73,17 +64,7 @@ namespace ViewModel
             command.CommandText = "UPDATE ORDERHISTORY SET SYMBOL = @Symbol, SIDE = @Side, TYPE = @Type, QTY = @Qty, PRICE = @Price, FILLPRICE = @FillPrice, STATUS = @Status, PLACINGTIME = @PlacingTime, CLOSINGTIME = @ClosingTime, USERID = @UserID WHERE ID = @ID";
 
             // Add parameters to prevent SQL injection
-            command.Parameters.AddWithValue("@Symbol", updatedOrderHistory.Symbol);
-            command.Parameters.AddWithValue("@Side", updatedOrderHistory.Side);
-            command.Parameters.AddWithValue("@Type", updatedOrderHistory.Type);
-            command.Parameters.AddWithValue("@Qty", updatedOrderHistory.Qty);
-            command.Parameters.AddWithValue("@Price", updatedOrderHistory.Price);
-            command.Parameters.AddWithValue("@FillPrice", updatedOrderHistory.FillPrice);
-            command.Parameters.AddWithValue("@Status", updatedOrderHistory.Status);
-            command.Parameters.AddWithValue("@PlacingTime", updatedOrderHistory.Placingtime);
-            command.Parameters.AddWithValue("@ClosingTime", updatedOrderHistory.ClosingTime);
-            command.Parameters.AddWithValue("@UserID", updatedOrderHistory.UserId);
-            command.Parameters.AddWithValue("@ID", updatedOrderHistory.ID); // Assuming ID is the primary key column
+            LoadParameters(updatedOrderHistory);
 
             // Execute the UPDATE command
             base.ExecuteCRUD();
@@ -99,6 +80,22 @@ namespace ViewModel
 
             // Execute the DELETE command
             base.ExecuteCRUD();
+        }
+
+        protected override void LoadParameters(BaseEntity entity)
+        {
+            OrderHistory orderHistory = entity as OrderHistory;
+            command.Parameters.AddWithValue("@Symbol", orderHistory.Symbol);
+            command.Parameters.AddWithValue("@Side", orderHistory.Side);
+            command.Parameters.AddWithValue("@Type", orderHistory.Type);
+            command.Parameters.AddWithValue("@Qty", orderHistory.Qty);
+            command.Parameters.AddWithValue("@Price", orderHistory.Price);
+            command.Parameters.AddWithValue("@FillPrice", orderHistory.FillPrice);
+            command.Parameters.AddWithValue("@Status", orderHistory.Status);
+            command.Parameters.AddWithValue("@PlacingTime", orderHistory.Placingtime);
+            command.Parameters.AddWithValue("@ClosingTime", orderHistory.ClosingTime);
+            command.Parameters.AddWithValue("@UserID", orderHistory.UserId);
+            command.Parameters.AddWithValue("@ID", orderHistory.ID);
         }
     }
 }

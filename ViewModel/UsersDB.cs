@@ -83,14 +83,7 @@ namespace ViewModel
             command.CommandText = "UPDATE USERS SET USERNAME = @UserName, FIRSTNAME = @FirstName, SECONDNAME = @SecondName, PASSWORD = @Password, BIRTHDATE = @BirthDate, EMAIL = @Email, ISADMIN = @IsAdmin WHERE ID = @ID";
 
             // Add parameters to prevent SQL injection
-            command.Parameters.AddWithValue("@UserName", updatedUser.UserName);
-            command.Parameters.AddWithValue("@FirstName", updatedUser.FirstName);
-            command.Parameters.AddWithValue("@SecondName", updatedUser.SecondName);
-            command.Parameters.AddWithValue("@Password", updatedUser.Password);
-            command.Parameters.AddWithValue("@BirthDate", updatedUser.BirthDate);
-            command.Parameters.AddWithValue("@Email", updatedUser.Email);
-            command.Parameters.AddWithValue("@IsAdmin", updatedUser.IsAdmin);
-            command.Parameters.AddWithValue("@ID", updatedUser.ID); // Assuming ID is the primary key column
+            LoadParameters(updatedUser); 
 
             // Execute the UPDATE command
             base.ExecuteCRUD();
@@ -108,5 +101,18 @@ namespace ViewModel
             base.ExecuteCRUD();
         }
 
+        protected override void LoadParameters(BaseEntity entity)
+        {
+            User user = entity as User;
+
+            command.Parameters.AddWithValue("@UserName", user.UserName);
+            command.Parameters.AddWithValue("@FirstName", user.FirstName);
+            command.Parameters.AddWithValue("@SecondName", user.SecondName);
+            command.Parameters.AddWithValue("@Password", user.Password);
+            command.Parameters.AddWithValue("@BirthDate", user.BirthDate);
+            command.Parameters.AddWithValue("@Email", user.Email);
+            command.Parameters.AddWithValue("@IsAdmin", user.IsAdmin);
+            command.Parameters.AddWithValue("@ID", user.ID);
+        }
     }
 }

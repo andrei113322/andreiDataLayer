@@ -55,8 +55,7 @@ namespace ViewModel
             command.CommandText = "INSERT INTO COINS (NAME, SYMBOL) VALUES (@Name, @Symbol)";
 
             // Add parameters to prevent SQL injection
-            command.Parameters.AddWithValue("@Name", newCoin.Name);
-            command.Parameters.AddWithValue("@Symbol", newCoin.Symbol);
+            LoadParameters(newCoin);
 
             // Execute the INSERT command
             base.ExecuteCRUD();
@@ -68,9 +67,7 @@ namespace ViewModel
             command.CommandText = "UPDATE COINS SET NAME = @Name, SYMBOL = @Symbol WHERE ID = @ID";
 
             // Add parameters to prevent SQL injection
-            command.Parameters.AddWithValue("@Name", updatedCoin.Name);
-            command.Parameters.AddWithValue("@Symbol", updatedCoin.Symbol);
-            command.Parameters.AddWithValue("@ID", updatedCoin.ID);
+            LoadParameters(updatedCoin);
 
             // Execute the UPDATE command
             base.ExecuteCRUD();
@@ -88,6 +85,12 @@ namespace ViewModel
             base.ExecuteCRUD();
         }
 
-
+        protected override void LoadParameters(BaseEntity entity)
+        {
+            Coin coin = entity as Coin;
+            command.Parameters.AddWithValue("@Name", coin.Name);
+            command.Parameters.AddWithValue("@Symbol", coin.Symbol);
+            command.Parameters.AddWithValue("@ID", coin.ID);
+        }
     }
 }
