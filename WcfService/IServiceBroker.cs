@@ -12,7 +12,7 @@ namespace WcfService
     public interface IServiceBroker
     {
         [OperationContract] CoinList SelectAllCoins();
-        [OperationContract] CoinList SelectCoinByUser(User user);
+        [OperationContract] Dictionary<Coin, double> SelectCoinByUser(User user);
         [OperationContract] void InsertCoin(Coin coin);
         [OperationContract] void UpdateCoin(Coin coin);
         [OperationContract] void DeleteCoin(Coin coin);

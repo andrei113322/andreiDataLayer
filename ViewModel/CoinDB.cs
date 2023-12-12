@@ -42,11 +42,19 @@ namespace ViewModel
             return null;
         }
 
-        public CoinList SelectByUser(User user)
+        public Dictionary<Coin, double> SelectByUser(User user)
         {
-            this.command.CommandText = String.Format("SELECT * FROM WALLET INNER JOIN COINS ON WALLET.COINID = COINS.ID WHERE WALLET.USERID={0}", user.ID);
-            CoinList list = new CoinList(base.ExecuteCommand());
-            return list;
+            this.command.CommandText = String.Format("SELECT COINS.*, WALLET.[VALUE] FROM (COINS INNER JOIN WALLET ON COINS.ID = WALLET.COINID) WHERE (WALLET.USERID = {0})", user.ID);
+            Dictionary<Coin, double> result = new Dictionary<Coin, double>();
+
+            List<Tuple<BaseEntity, double>> tuples = base.ExecuteCommandWithValues();
+
+            foreach (var item in tuples)
+            {
+                result.Add((Coin)item.Item1, item.Item2);
+            }
+
+            return result;
         }
 
         public void InsertCoin(Coin newCoin)

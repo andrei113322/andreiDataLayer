@@ -59,6 +59,38 @@ namespace ViewModel
             }
             return list;
         }
+
+
+        public List<Tuple<BaseEntity, double>> ExecuteCommandWithValues()
+        {
+            List<Tuple<BaseEntity, double>> result = new List<Tuple<BaseEntity, double>>();
+
+            try
+            {
+                connection.Open();
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    BaseEntity entity = NewEntity();
+                    result.Add(new Tuple<BaseEntity, double>(CreateModel(entity), Convert.ToDouble(reader["VALUE"])));
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                if (reader != null)
+                    reader.Close();
+                if (connection.State == ConnectionState.Open)
+                    connection.Close();
+            }
+
+            return result;
+        }
+
         private static string Path()
         {
             string s = Environment.CurrentDirectory; //המיקום שבו רץ הפרויקט

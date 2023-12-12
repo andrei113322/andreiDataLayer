@@ -86,10 +86,10 @@ namespace WcfService
             return list;
         }
 
-        public CoinList SelectCoinByUser(User user)
+        public Dictionary<Coin, double> SelectCoinByUser(User user)
         {
             CoinDB db = new CoinDB();
-            CoinList list = db.SelectByUser(user);
+            Dictionary<Coin, double> list = db.SelectByUser(user);
             return list;
         }
 
