@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Binance.API.Csharp.Client;
+using Binance.API.Csharp.Client.Models.Market.TradingRules;
 
 namespace BinanceCCC
 {
@@ -19,18 +20,22 @@ namespace BinanceCCC
             myBClient = new BinanceClient(myClient);
         }
 
-        public decimal GetCriptoValue(string symbol)
+        public Dictionary<string, decimal> GetCriptoValue(List<string> input)
         {
             try
             {
                 var tickerPrices = myBClient.GetAllPrices().Result;
-                decimal result = Convert.ToDecimal(tickerPrices.FirstOrDefault(SymbolPrice => SymbolPrice.Symbol == symbol).Price);
+                Dictionary<string, decimal> result = new Dictionary<string, decimal>();
+                foreach (var item in input)
+                {
+                    result.Add(item, Convert.ToDecimal(tickerPrices.FirstOrDefault(SymbolPrice => SymbolPrice.Symbol == item).Price));
+                }
                 return result;
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Exception: {ex.Message}");
-                return -1; // or throw an exception, handle the error based on your requirements
+                return null; // or throw an exception, handle the error based on your requirements
             }
         }
     }
