@@ -49,9 +49,9 @@
     <Compile Include="ServiceBroker.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BinanceConnector\BinanceConnector.csproj">
-      <Project>{7c27ebae-a80f-4c1b-b1c2-2b82410a301c}</Project>
-      <Name>BinanceConnector</Name>
+    <ProjectReference Include="..\BinanceCCC\BinanceCCC.csproj">
+      <Project>{4fad6e53-503b-4701-9f29-6196ca240891}</Project>
+      <Name>BinanceCCC</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{08072315-c327-43b2-b3fa-5b71ff934f83}</Project>
