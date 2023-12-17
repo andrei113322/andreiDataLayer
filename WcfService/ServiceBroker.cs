@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ViewModel;
+using BinanceConnector;
 
 namespace WcfService
 {
@@ -32,6 +33,12 @@ namespace WcfService
         {
             UsersDB db = new UsersDB();
             db.DeleteUser(user.ID);
+        }
+
+        public decimal GiveCoinValue(string Value)
+        {
+            Connections connections = new Connections();
+            return connections.GetCriptoValue(Value);
         }
 
         public void InsertCoin(Coin coin)

@@ -100,10 +100,6 @@
       <Project>{08072315-c327-43b2-b3fa-5b71ff934f83}</Project>
       <Name>Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UserGUI\UserGUI.csproj">
-      <Project>{03f6a3c3-1295-4694-863e-f073ede97d79}</Project>
-      <Name>UserGUI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ViewModel\ViewModel.csproj">
       <Project>{74316985-7927-4ef0-bd5d-812aa33bd785}</Project>
       <Name>ViewModel</Name>
