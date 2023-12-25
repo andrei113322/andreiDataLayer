@@ -36,6 +36,6 @@ namespace WcfService
         [OperationContract] void UpdateUser(User user);
         [OperationContract] void DeleteUser(User user);
 
-        [OperationContract] Dictionary<string, decimal> GiveCoinValue(List<string> Value);
+        [OperationContract] Task<Dictionary<string, decimal>> GiveCoinValue(List<string> Value);
     }
 }

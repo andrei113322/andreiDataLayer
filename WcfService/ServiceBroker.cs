@@ -35,7 +35,7 @@ namespace WcfService
             db.DeleteUser(user.ID);
         }
 
-        public Dictionary<string, decimal> GiveCoinValue(List<string> Value)
+        public Task<Dictionary<string, decimal>> GiveCoinValue(List<string> Value)
         {
             Connections connections = new Connections();
             return connections.GetCriptoValue(Value);
