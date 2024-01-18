@@ -36,14 +36,14 @@ namespace ViewModel
             return list;
         }
 
-        //public User SelectById(int id)
-        //{
-        //    command.CommandText = "SELECT * FROM USERS WHERE id=" + id;
-        //    UserList list = new UserList(ExecuteCommand());
-        //    if (list.Count == 0)
-        //        return null;
-        //    return list[0];
-        //}
+        public User SelectById(int id)
+        {
+            command.CommandText = "SELECT * FROM USERS WHERE id=" + id;
+            UserList list = new UserList(ExecuteCommand());
+            if (list.Count == 0)
+                return null;
+            return list[0];
+        }
 
         public User SelectByEmail(string email)
         {
@@ -67,17 +67,17 @@ namespace ViewModel
             return list[0];
         }
 
-        public void InsertUser(User newUser)
+        public bool InsertUser(User newUser)
         {
             // Assuming you have appropriate database columns for each property
             command.CommandText = $"INSERT INTO USERS (USERNAME, FIRSTNAME, SECONDNAME, [PASSWORD], BIRTHDATE, EMAIL, ISADMIN) VALUES ('{newUser.UserName}', '{newUser.FirstName}', '{newUser.SecondName}', '{newUser.Password}', #{newUser.BirthDate}#, '{newUser.Email}', {newUser.IsAdmin})";
             string cammand = command.CommandText;
 
             // Execute the INSERT command
-            base.ExecuteCRUD();
+          return   base.ExecuteCRUD();
         }
 
-        public void UpdateUser(User updatedUser)
+        public bool UpdateUser(User updatedUser)
         {
             // Assuming you have an appropriate primary key column in your database
             command.CommandText = "UPDATE USERS SET USERNAME = @UserName, FIRSTNAME = @FirstName, SECONDNAME = @SecondName, PASSWORD = @Password, BIRTHDATE = @BirthDate, EMAIL = @Email, ISADMIN = @IsAdmin WHERE ID = @ID";
@@ -86,10 +86,10 @@ namespace ViewModel
             LoadParameters(updatedUser); 
 
             // Execute the UPDATE command
-            base.ExecuteCRUD();
+          return   base.ExecuteCRUD();
         }
 
-        public void DeleteUser(int userId)
+        public bool DeleteUser(int userId)
         {
             // Assuming you have an appropriate primary key column in your database
             command.CommandText = "DELETE FROM USERS WHERE ID = @ID";
@@ -98,7 +98,7 @@ namespace ViewModel
             command.Parameters.AddWithValue("@ID", userId);
 
             // Execute the DELETE command
-            base.ExecuteCRUD();
+          return   base.ExecuteCRUD();
         }
 
         protected override void LoadParameters(BaseEntity entity)

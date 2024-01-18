@@ -18,9 +18,6 @@ namespace Model
         [DataMember]
         public string Symbol { get { return symbol; } set { symbol = value; } }
 
-        private UserList myUsers;
-        [DataMember]
-        public UserList Users { get { return myUsers; } set { myUsers = value; } }
 
     }
 

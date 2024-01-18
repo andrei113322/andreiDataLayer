@@ -104,7 +104,7 @@ namespace ViewModel
             return s;
         }
 
-        public int ExecuteCRUD() //עבודה וניהול התקשורת מול המסד
+        public bool ExecuteCRUD() //עבודה וניהול התקשורת מול המסד
         {
             int records = 0;
             try
@@ -121,7 +121,7 @@ namespace ViewModel
                 if (connection.State == ConnectionState.Open)
                     connection.Close();
             }
-            return records;
+            return records==1;
         }
     }
 }

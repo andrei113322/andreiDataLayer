@@ -57,7 +57,7 @@ namespace ViewModel
             return result;
         }
 
-        public void InsertCoin(Coin newCoin)
+        public bool InsertCoin(Coin newCoin)
         {
             // Assuming you have appropriate database columns for each property
             command.CommandText = "INSERT INTO COINS (NAME, SYMBOL) VALUES (@Name, @Symbol)";
@@ -66,10 +66,10 @@ namespace ViewModel
             LoadParameters(newCoin);
 
             // Execute the INSERT command
-            base.ExecuteCRUD();
+            return base.ExecuteCRUD();
         }
 
-        public void UpdateCoin(Coin updatedCoin)
+        public bool UpdateCoin(Coin updatedCoin)
         {
             // Assuming you have an appropriate primary key column in your database
             command.CommandText = "UPDATE COINS SET NAME = @Name, SYMBOL = @Symbol WHERE ID = @ID";
@@ -78,10 +78,10 @@ namespace ViewModel
             LoadParameters(updatedCoin);
 
             // Execute the UPDATE command
-            base.ExecuteCRUD();
+          return   base.ExecuteCRUD();
         }
 
-        public void DeleteCoin(int coinId)
+        public bool DeleteCoin(int coinId)
         {
             // Assuming you have an appropriate primary key column in your database
             command.CommandText = "DELETE FROM COINS WHERE ID = @ID";
@@ -90,7 +90,7 @@ namespace ViewModel
             command.Parameters.AddWithValue("@ID", coinId);
 
             // Execute the DELETE command
-            base.ExecuteCRUD();
+          return   base.ExecuteCRUD();
         }
 
         protected override void LoadParameters(BaseEntity entity)

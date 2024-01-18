@@ -46,6 +46,7 @@
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Coin.cs" />
     <Compile Include="Log.cs" />
+    <Compile Include="MyCoin.cs" />
     <Compile Include="OrderHistory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />

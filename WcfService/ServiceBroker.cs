@@ -11,28 +11,28 @@ namespace WcfService
 {
     public class ServiceBroker : IServiceBroker
     {
-        public void DeleteCoin(Coin coin)
+        public bool DeleteCoin(Coin coin)
         {
             CoinDB db = new CoinDB();
-            db.DeleteCoin(coin.ID);
+            return db.DeleteCoin(coin.ID);
         }
 
-        public void DeleteLog(Log log)
+        public bool DeleteLog(Log log)
         {
             LogDB db = new LogDB();
-            db.DeleteLog(log.ID);
+            return db.DeleteLog(log.ID);
         }
 
-        public void DeleteOrderHistory(OrderHistory orderHistory)
+        public bool DeleteOrderHistory(OrderHistory orderHistory)
         {
             OrderHistoryDB db = new OrderHistoryDB();
-            db.DeleteOrderHistory(orderHistory.ID);
+            return db.DeleteOrderHistory(orderHistory.ID);
         }
 
-        public void DeleteUser(User user)
+        public bool DeleteUser(User user)
         {
             UsersDB db = new UsersDB();
-            db.DeleteUser(user.ID);
+            return db.DeleteUser(user.ID);
         }
 
         public Task<Dictionary<string, decimal>> GiveCoinValue(List<string> Value)
@@ -41,28 +41,28 @@ namespace WcfService
             return connections.GetCriptoValue(Value);
         }
 
-        public void InsertCoin(Coin coin)
+        public bool InsertCoin(Coin coin)
         {
             CoinDB db = new CoinDB();
-            db.InsertCoin(coin);
+            return db.InsertCoin(coin);
         }
 
-        public void InsertLog(Log log)
+        public bool InsertLog(Log log)
         {
             LogDB db = new LogDB();
-            db.InsertLog(log);
+            return db.InsertLog(log);
         }
 
-        public void InsertOrderHistory(OrderHistory orderHistory)
+        public bool InsertOrderHistory(OrderHistory orderHistory)
         {
             OrderHistoryDB db = new OrderHistoryDB();
-            db.InsertOrderHistory(orderHistory);
+            return db.InsertOrderHistory(orderHistory);
         }
 
-        public void InsertUser(User user)
+        public bool InsertUser(User user)
         {
             UsersDB db = new UsersDB();
-            db.InsertUser(user);
+            return db.InsertUser(user);
         }
 
         public CoinList SelectAllCoins()
@@ -128,28 +128,47 @@ namespace WcfService
             return list;
         }
 
-        public void UpdateCoin(Coin coin)
+        public bool UpdateCoin(Coin coin)
         {
             CoinDB db = new CoinDB();
-            db.UpdateCoin(coin);
+            return db.UpdateCoin(coin);
         }
 
-        public void UpdateLog(Log log)
+        public bool UpdateLog(Log log)
         {
             LogDB db = new LogDB();
-            db.UpdateLog(log);
+            return db.UpdateLog(log);
         }
-
-        public void UpdateOrderHistory(OrderHistory orderHistory)
+        public bool UpdateOrderHistory(OrderHistory orderHistory)
         {
             OrderHistoryDB db = new OrderHistoryDB();
-            db.UpdateOrderHistory(orderHistory);
+            return db.UpdateOrderHistory(orderHistory);
         }
 
-        public void UpdateUser(User user)
+        public bool UpdateUser(User user)
         {
             UsersDB db = new UsersDB();
-            db.UpdateUser(user);
+            return db.UpdateUser(user);
+        }
+        public MyCoinList GetCoinsByUser(User user)
+        {
+            MyCoinDB myCoinDB = new MyCoinDB();
+            return myCoinDB.SelectCoinsByUser(user);
+        }
+        public bool InsertMyCoin(MyCoin myCoin)
+        {
+            MyCoinDB db = new MyCoinDB();
+            return db.InsertCoin(myCoin);
+        }
+        public bool UpdateMyCoin(MyCoin myCoin)
+        {
+            MyCoinDB db = new MyCoinDB();
+            return db.UpdateCoin(myCoin);
+        }
+        public bool DeleteMyCoin(MyCoin myCoin)
+        {
+            MyCoinDB db = new MyCoinDB();
+            return db.DeleteCoin(myCoin);
         }
     }
 }

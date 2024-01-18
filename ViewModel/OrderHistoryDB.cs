@@ -46,7 +46,7 @@ namespace ViewModel
             return list;
         }
 
-        public void InsertOrderHistory(OrderHistory newOrderHistory)
+        public bool InsertOrderHistory(OrderHistory newOrderHistory)
         {
             // Assuming you have appropriate database columns for each property
             command.CommandText = "INSERT INTO ORDERHISTORY (SYMBOL, SIDE, TYPE, QTY, PRICE, FILLPRICE, STATUS, PLACINGTIME, CLOSINGTIME, USERID) VALUES (@Symbol, @Side, @Type, @Qty, @Price, @FillPrice, @Status, @PlacingTime, @ClosingTime, @UserID)";
@@ -55,10 +55,10 @@ namespace ViewModel
             LoadParameters(newOrderHistory);
 
             // Execute the INSERT command
-            base.ExecuteCRUD();
+          return   base.ExecuteCRUD();
         }
 
-        public void UpdateOrderHistory(OrderHistory updatedOrderHistory)
+        public bool UpdateOrderHistory(OrderHistory updatedOrderHistory)
         {
             // Assuming you have an appropriate primary key column in your database
             command.CommandText = "UPDATE ORDERHISTORY SET SYMBOL = @Symbol, SIDE = @Side, TYPE = @Type, QTY = @Qty, PRICE = @Price, FILLPRICE = @FillPrice, STATUS = @Status, PLACINGTIME = @PlacingTime, CLOSINGTIME = @ClosingTime, USERID = @UserID WHERE ID = @ID";
@@ -67,10 +67,10 @@ namespace ViewModel
             LoadParameters(updatedOrderHistory);
 
             // Execute the UPDATE command
-            base.ExecuteCRUD();
+          return   base.ExecuteCRUD();
         }
 
-        public void DeleteOrderHistory(int orderHistoryId)
+        public bool DeleteOrderHistory(int orderHistoryId)
         {
             // Assuming you have an appropriate primary key column in your database
             command.CommandText = "DELETE FROM ORDERHISTORY WHERE ID = @ID";
@@ -79,7 +79,7 @@ namespace ViewModel
             command.Parameters.AddWithValue("@ID", orderHistoryId);
 
             // Execute the DELETE command
-            base.ExecuteCRUD();
+          return   base.ExecuteCRUD();
         }
 
         protected override void LoadParameters(BaseEntity entity)

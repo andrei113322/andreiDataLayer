@@ -38,7 +38,7 @@ namespace ViewModel
             return list;
         }
 
-        public void InsertLog(Log newLog)
+        public bool InsertLog(Log newLog)
         {
             // Assuming you have appropriate database columns for each property
             command.CommandText = "INSERT INTO LOG (TIME, [P&L], ACTION, USERID) VALUES (@Time, @PAndl, @Action, @UserID)";
@@ -46,10 +46,10 @@ namespace ViewModel
             // Add parameters to prevent SQL injection
             LoadParameters(newLog);
             // Execute the INSERT command
-            base.ExecuteCRUD();
+          return   base.ExecuteCRUD();
         }
 
-        public void UpdateLog(Log updatedLog)
+        public bool UpdateLog(Log updatedLog)
         {
             // Assuming you have an appropriate primary key column in your database
             command.CommandText = "UPDATE LOG SET TIME = @Time, [P&L] = @PAndl, ACTION = @Action, USERID = @UserID WHERE ID = @ID";
@@ -58,10 +58,10 @@ namespace ViewModel
             LoadParameters(updatedLog); 
 
             // Execute the UPDATE command
-            base.ExecuteCRUD();
+          return   base.ExecuteCRUD();
         }
 
-        public void DeleteLog(int logId)
+        public bool DeleteLog(int logId)
         {
             // Assuming you have an appropriate primary key column in your database
             command.CommandText = "DELETE FROM LOG WHERE ID = @ID";
@@ -70,7 +70,7 @@ namespace ViewModel
             command.Parameters.AddWithValue("@ID", logId);
 
             // Execute the DELETE command
-            base.ExecuteCRUD();
+          return   base.ExecuteCRUD();
         }
 
         protected override void LoadParameters(BaseEntity entity)

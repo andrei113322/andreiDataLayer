@@ -13,29 +13,34 @@ namespace WcfService
     {
         [OperationContract] CoinList SelectAllCoins();
         [OperationContract] Dictionary<Coin, double> SelectCoinByUser(User user);
-        [OperationContract] void InsertCoin(Coin coin);
-        [OperationContract] void UpdateCoin(Coin coin);
-        [OperationContract] void DeleteCoin(Coin coin);
+        [OperationContract] bool InsertCoin(Coin coin);
+        [OperationContract] bool UpdateCoin(Coin coin);
+        [OperationContract] bool DeleteCoin(Coin coin);
 
         [OperationContract] LogList SelectAllLogs();
         [OperationContract] LogList SelectLogByUser(User user);
-        [OperationContract] void InsertLog(Log log);
-        [OperationContract] void UpdateLog(Log log);
-        [OperationContract] void DeleteLog(Log log);
+        [OperationContract] bool InsertLog(Log log);
+        [OperationContract] bool UpdateLog(Log log);
+        [OperationContract] bool DeleteLog(Log log);
 
         [OperationContract] OrderHistoryList SelectAllOrderHistory();
         [OperationContract] OrderHistoryList SelectOrderHistoryByUser(User user);
-        [OperationContract] void InsertOrderHistory(OrderHistory orderHistory);
-        [OperationContract] void UpdateOrderHistory(OrderHistory orderHistory);
-        [OperationContract] void DeleteOrderHistory(OrderHistory orderHistory);
+        [OperationContract] bool InsertOrderHistory(OrderHistory orderHistory);
+        [OperationContract] bool UpdateOrderHistory(OrderHistory orderHistory);
+        [OperationContract] bool DeleteOrderHistory(OrderHistory orderHistory);
 
         [OperationContract] UserList SelectAllUsers();
         [OperationContract] User SelectUserByEmail(string email);
         [OperationContract] User SelectUserByUserName(string userName);
-        [OperationContract] void InsertUser(User user);
-        [OperationContract] void UpdateUser(User user);
-        [OperationContract] void DeleteUser(User user);
+        [OperationContract] bool InsertUser(User user);
+        [OperationContract] bool UpdateUser(User user);
+        [OperationContract] bool DeleteUser(User user);
 
+
+        [OperationContract] MyCoinList GetCoinsByUser(User user);
+        [OperationContract] bool InsertMyCoin(MyCoin myCoin);
+        [OperationContract] bool UpdateMyCoin(MyCoin myCoin);
+        [OperationContract] bool DeleteMyCoin(MyCoin myCoin);
         [OperationContract] Task<Dictionary<string, decimal>> GiveCoinValue(List<string> Value);
     }
 }
