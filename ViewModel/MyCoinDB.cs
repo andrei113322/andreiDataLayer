@@ -56,10 +56,9 @@ namespace ViewModel
         public bool UpdateCoin(MyCoin updatedCoin)
         {
             // Assuming you have an appropriate primary key column in your database
-            command.CommandText = "UPDATE COINS SET USERID = @User, COINID = @Coin, VALUE=@Value WHERE ID = @ID";
+            //command.CommandText = "UPDATE COINS SET USERID = @User, COINID = @Coin, VALUE=@Value WHERE ID = @ID";
 
-            // Add parameters to prevent SQL injection
-            LoadParameters(updatedCoin);
+            command.CommandText = $"UPDATE WALLET SET [VALUE] = {updatedCoin.value} WHERE COINID = {updatedCoin.Coin.ID} AND USERID = {updatedCoin.User.ID}";
 
             // Execute the UPDATE command
           return   base.ExecuteCRUD();
