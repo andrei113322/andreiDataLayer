@@ -80,10 +80,7 @@ namespace ViewModel
         public bool UpdateUser(User updatedUser)
         {
             // Assuming you have an appropriate primary key column in your database
-            command.CommandText = "UPDATE USERS SET USERNAME = @UserName, FIRSTNAME = @FirstName, SECONDNAME = @SecondName, PASSWORD = @Password, BIRTHDATE = @BirthDate, EMAIL = @Email, ISADMIN = @IsAdmin WHERE ID = @ID";
-
-            // Add parameters to prevent SQL injection
-            LoadParameters(updatedUser); 
+            command.CommandText = $"UPDATE USERS SET USERNAME = '{updatedUser.UserName}', FIRSTNAME = '{updatedUser.FirstName}', SECONDNAME = '{updatedUser.SecondName}', [PASSWORD] = '{updatedUser.Password}', BIRTHDATE = #{updatedUser.BirthDate}#, EMAIL = '{updatedUser.Email}', ISADMIN = {updatedUser.IsAdmin} WHERE iD = {updatedUser.ID}";
 
             // Execute the UPDATE command
           return   base.ExecuteCRUD();

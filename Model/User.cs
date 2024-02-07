@@ -10,6 +10,26 @@ namespace Model
     [DataContract]
     public class User : BaseEntity
     {
+
+        public User (User user)
+        {
+            User newUser = new User();
+            newUser.UserName = user.UserName;
+            newUser.Password = user.Password;
+            newUser.BirthDate = user.BirthDate;
+            newUser.Email = user.Email;
+            newUser.FirstName = user.FirstName;
+            newUser.SecondName = user.SecondName;
+            newUser.IsAdmin = user.IsAdmin;
+            newUser.ID = user.ID;
+        }
+
+        public User()
+        {
+            
+        }
+
+
         protected string userName;
 
         [DataMember]
