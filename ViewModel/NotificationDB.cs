@@ -16,7 +16,8 @@ namespace ViewModel
             notification.Reciever = reader["RECIEVER"].ToString();
             notification.SentDate = DateTime.Parse(reader["SENTDATE"].ToString());
             notification.Data = reader["DATA"].ToString();
-            throw new NotImplementedException();
+
+            return notification;
         }
 
         protected override void LoadParameters(BaseEntity entity)
@@ -38,7 +39,7 @@ namespace ViewModel
 
         public NotificationList SelectByReciever(User user)
         {
-            this.command.CommandText = $"SELECT * FROM NOTIFICATIONS WHERE (RECIEVERID = {user.ID})";
+            this.command.CommandText = String.Format("SELECT * FROM NOTIFICATIONS WHERE (RECIEVERID = {0})", user.ID);
             NotificationList list = new NotificationList(base.ExecuteCommand());
             return list;
         }

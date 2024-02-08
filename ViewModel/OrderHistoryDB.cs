@@ -24,7 +24,6 @@ namespace ViewModel
             orderHistory.UserId = int.Parse(reader["USERID"].ToString());
 
             return orderHistory;
-            throw new NotImplementedException();
         }
 
         protected override BaseEntity NewEntity()
