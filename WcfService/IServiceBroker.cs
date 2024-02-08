@@ -42,5 +42,10 @@ namespace WcfService
         [OperationContract] bool UpdateMyCoin(MyCoin myCoin);
         [OperationContract] bool DeleteMyCoin(MyCoin myCoin);
         [OperationContract] Task<Dictionary<string, decimal>> GiveCoinValue(List<string> Value);
+
+
+        [OperationContract] NotificationList GetNotificationsBySender(User user);
+        [OperationContract] NotificationList GetNotificationsByReciever(User user);
+
     }
 }

@@ -170,5 +170,18 @@ namespace WcfService
             MyCoinDB db = new MyCoinDB();
             return db.DeleteCoin(myCoin);
         }
+
+        public NotificationList GetNotificationsBySender(User user)
+        {
+            NotificationDB notificationDB = new NotificationDB();
+            return notificationDB.SelectBySender(user);
+        }
+
+
+        public NotificationList GetNotificationsByReciever(User user)
+        {
+            NotificationDB notificationDB = new NotificationDB();
+            return notificationDB.SelectByReciever(user);
+        }
     }
 }
