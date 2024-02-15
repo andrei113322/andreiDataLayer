@@ -46,6 +46,7 @@ namespace WcfService
 
         [OperationContract] NotificationList GetNotificationsBySender(User user);
         [OperationContract] NotificationList GetNotificationsByReciever(User user);
+        [OperationContract] bool InsertNotification(Notification notification);
 
     }
 }

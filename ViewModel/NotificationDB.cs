@@ -48,5 +48,14 @@ namespace ViewModel
         {
             return new Notification();
         }
+
+        public bool InsertNotification(Notification notification)
+        {
+            command.CommandText = $"INSERT INTO NOTIFICATIONS (SENDER, RECIEVER, SENTDATE, DATA, [READ], SENDERID, RECIEVERID) VALUES ('{notification.Sender}', '{notification.Reciever}', #{notification.SentDate}#, '{notification.Data}',{true},{notification.SenderId}, {notification.RecieverId})";
+            LoadParameters(notification);
+            return base.ExecuteCRUD();
+        }
+
+
     }
 }

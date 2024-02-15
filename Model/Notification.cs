@@ -14,11 +14,15 @@ namespace Model
         protected string reciever;
         protected DateTime sentDate;
         protected string data;
+        protected int senderId;
+        protected int recieverId;
 
         [DataMember] public string Sender { get { return sender; } set { sender = value; } }
         [DataMember] public string Reciever { get { return reciever; } set { reciever = value; } }
         [DataMember] public DateTime SentDate { get { return sentDate; } set { sentDate = value; } }
         [DataMember] public string Data { get { return data; } set { data = value; } }
+        [DataMember] public int SenderId { get  {return senderId; } set { senderId = value; } }
+        [DataMember] public int RecieverId { get {return recieverId; } set {recieverId = value; } }
     }
 
     [CollectionDataContract]

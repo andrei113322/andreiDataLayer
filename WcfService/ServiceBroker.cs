@@ -183,5 +183,11 @@ namespace WcfService
             NotificationDB notificationDB = new NotificationDB();
             return notificationDB.SelectByReciever(user);
         }
+
+        public bool InsertNotification(Notification notification)
+        {
+            NotificationDB db = new NotificationDB();
+            return db.InsertNotification(notification);
+        }
     }
 }
