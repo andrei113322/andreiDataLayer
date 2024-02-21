@@ -44,10 +44,8 @@ namespace ViewModel
         public bool InsertCoin(MyCoin newCoin)
         {
             // Assuming you have appropriate database columns for each property
-            command.CommandText = "INSERT INTO WALLET (USERID, COINID, VALUE) VALUES (@User, @Coin, @Value)";
+            command.CommandText = $"INSERT INTO WALLET ([VALUE], COINID, USERID) VALUES ({newCoin.value}, {newCoin.Coin.ID}, {newCoin.User.ID})";
 
-            // Add parameters to prevent SQL injection
-            LoadParameters(newCoin);
 
             // Execute the INSERT command
           return   base.ExecuteCRUD();
