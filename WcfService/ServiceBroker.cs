@@ -41,6 +41,12 @@ namespace WcfService
             return connections.GetCriptoValue(Value);
         }
 
+        public Task<List<Decimal>> GetHistoricalClosingPrices(string symbol)
+        {
+            Connections connections = new Connections();
+            return connections.GetHistoricalClosingPrices(symbol);
+        }
+
         public bool InsertCoin(Coin coin)
         {
             CoinDB db = new CoinDB();

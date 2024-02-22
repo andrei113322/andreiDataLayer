@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Binance.API.Csharp.Client;
+using Binance.API.Csharp.Client.Models.Enums;
 using Binance.API.Csharp.Client.Models.Market.TradingRules;
 
 namespace BinanceCCC
@@ -30,6 +32,37 @@ namespace BinanceCCC
                 {
                     result.Add(item, Convert.ToDecimal(tickerPrices.FirstOrDefault(SymbolPrice => SymbolPrice.Symbol == item).Price));
                 }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+                return null;
+            }
+        }
+
+        public async Task<List<Decimal>> GetHistoricalClosingPrices(string symbol)
+        {
+            try
+            {
+                // Define start and end timestamps (from 2016 to now)
+                TimeInterval interval = TimeInterval.Days_1;
+                var startTime = new DateTime(2022, 1, 1);
+                var endTime = DateTime.UtcNow;
+                List<Decimal> result = new List<Decimal>();
+
+                // Fetch historical candlestick data
+                var candlesticks = await myBClient.GetCandleSticks(symbol, interval, startTime, endTime);
+
+                foreach (var candlestick in candlesticks)
+                {
+                    // Extract the closing price and the timestamp (which represents the start time of the candle)
+                    decimal closePrice = candlestick.Close;
+
+                    // Update or add the closing price for the day
+                    result.Add(closePrice);
+                }
+
                 return result;
             }
             catch (Exception ex)
