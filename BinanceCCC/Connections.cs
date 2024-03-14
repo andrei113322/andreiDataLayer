@@ -28,10 +28,13 @@ namespace BinanceCCC
             {
                 var tickerPrices = await myBClient.GetAllPrices();
                 Dictionary<string, decimal>  result = new Dictionary<string, decimal>();
+                input.Remove("USDRUSD");
+                input.Remove("USDRUSDT");
                 foreach (var item in input)
                 {
                     result.Add(item, Convert.ToDecimal(tickerPrices.FirstOrDefault(SymbolPrice => SymbolPrice.Symbol == item).Price));
                 }
+                result.Add("USDRUSDT", 1);
                 return result;
             }
             catch (Exception ex)
