@@ -50,12 +50,12 @@ namespace BinanceCCC
             {
                 // Define start and end timestamps (from 2016 to now)
                 TimeInterval interval = TimeInterval.Days_1;
-                var startTime = new DateTime(2022, 1, 1);
+                var startTime = new DateTime(2023, 1, 1);
                 var endTime = DateTime.UtcNow;
                 List<Decimal> result = new List<Decimal>();
 
                 // Fetch historical candlestick data
-                var candlesticks = await myBClient.GetCandleSticks(symbol, interval, startTime, endTime);
+                var candlesticks = await myBClient.GetCandleSticks(symbol, interval, startTime, endTime, 500);
 
                 foreach (var candlestick in candlesticks)
                 {

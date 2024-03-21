@@ -48,10 +48,7 @@ namespace ViewModel
         public bool InsertOrderHistory(OrderHistory newOrderHistory)
         {
             // Assuming you have appropriate database columns for each property
-            command.CommandText = "INSERT INTO ORDERHISTORY (SYMBOL, SIDE, TYPE, QTY, PRICE, FILLPRICE, STATUS, PLACINGTIME, CLOSINGTIME, USERID) VALUES (@Symbol, @Side, @Type, @Qty, @Price, @FillPrice, @Status, @PlacingTime, @ClosingTime, @UserID)";
-
-            // Add parameters to prevent SQL injection
-            LoadParameters(newOrderHistory);
+            command.CommandText = $"INSERT INTO ORDERHISTORY (USERID, SYMBOL, SIDE, TYPE, QTY, PRICE, FILLPRICE, STATUS, PLACINGTIME, CLOSINGTIME) VALUES ({newOrderHistory.UserId},'{newOrderHistory.Symbol}','{newOrderHistory.Side}','{newOrderHistory.Type}',{newOrderHistory.Qty},{newOrderHistory.Price},{newOrderHistory.FillPrice},'{newOrderHistory.Status}',#{newOrderHistory.Placingtime}#,#{newOrderHistory.ClosingTime}#)";
 
             // Execute the INSERT command
           return   base.ExecuteCRUD();
