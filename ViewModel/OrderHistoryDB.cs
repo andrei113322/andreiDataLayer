@@ -22,6 +22,7 @@ namespace ViewModel
             orderHistory.Placingtime = DateTime.Parse(reader["PLACINGTIME"].ToString());
             orderHistory.ClosingTime = DateTime.Parse(reader["CLOSINGTIME"].ToString());
             orderHistory.UserId = int.Parse(reader["USERID"].ToString());
+            orderHistory.Laverage = int.Parse(reader["LAVERAGE"].ToString());
 
             return orderHistory;
         }
@@ -48,7 +49,7 @@ namespace ViewModel
         public bool InsertOrderHistory(OrderHistory newOrderHistory)
         {
             // Assuming you have appropriate database columns for each property
-            command.CommandText = $"INSERT INTO ORDERHISTORY (USERID, SYMBOL, SIDE, TYPE, QTY, PRICE, FILLPRICE, STATUS, PLACINGTIME, CLOSINGTIME) VALUES ({newOrderHistory.UserId},'{newOrderHistory.Symbol}','{newOrderHistory.Side}','{newOrderHistory.Type}',{newOrderHistory.Qty},{newOrderHistory.Price},{newOrderHistory.FillPrice},'{newOrderHistory.Status}',#{newOrderHistory.Placingtime}#,#{newOrderHistory.ClosingTime}#)";
+            command.CommandText = $"INSERT INTO ORDERHISTORY (USERID, SYMBOL, SIDE, TYPE, QTY, PRICE, FILLPRICE, STATUS, PLACINGTIME, CLOSINGTIME, LAVERAGE) VALUES ({newOrderHistory.UserId},'{newOrderHistory.Symbol}','{newOrderHistory.Side}','{newOrderHistory.Type}',{newOrderHistory.Qty},{newOrderHistory.Price},{newOrderHistory.FillPrice},'{newOrderHistory.Status}',#{newOrderHistory.Placingtime}#,#{newOrderHistory.ClosingTime}#, {newOrderHistory.Laverage})";
 
             // Execute the INSERT command
           return   base.ExecuteCRUD();

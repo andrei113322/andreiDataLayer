@@ -20,6 +20,14 @@ namespace Model
             set { symbol = value; }
         }
 
+        protected int laverage;
+        [DataMember]
+        public int Laverage
+        {
+            get { return laverage; }
+            set { laverage = value; }
+        }
+
         protected string side;
 
         [DataMember]
