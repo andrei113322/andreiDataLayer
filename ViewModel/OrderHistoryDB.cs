@@ -12,6 +12,7 @@ namespace ViewModel
         protected override BaseEntity CreateModel(BaseEntity entity)
         {
             OrderHistory orderHistory = new OrderHistory();
+            orderHistory.ID = int.Parse(reader["ID"].ToString());
             orderHistory.Symbol = reader["SYMBOL"].ToString();
             orderHistory.Side = reader["SIDE"].ToString();
             orderHistory.Type = reader["TYPE"].ToString();
@@ -58,7 +59,7 @@ namespace ViewModel
         public bool UpdateOrderHistory(OrderHistory updatedOrderHistory)
         {
             // Assuming you have an appropriate primary key column in your database
-            command.CommandText = "UPDATE ORDERHISTORY SET SYMBOL = @Symbol, SIDE = @Side, TYPE = @Type, QTY = @Qty, PRICE = @Price, FILLPRICE = @FillPrice, STATUS = @Status, PLACINGTIME = @PlacingTime, CLOSINGTIME = @ClosingTime, USERID = @UserID WHERE ID = @ID";
+            command.CommandText = $"UPDATE ORDERHISTORY SET SYMBOL = '{updatedOrderHistory.Symbol}', SIDE = '{updatedOrderHistory.Side}', TYPE = '{updatedOrderHistory.Type}', QTY = {updatedOrderHistory.Qty}, PRICE = {updatedOrderHistory.Price}, FILLPRICE = {updatedOrderHistory.FillPrice}, STATUS = '{updatedOrderHistory.Status}', PLACINGTIME = #{updatedOrderHistory.Placingtime}#, CLOSINGTIME = #{updatedOrderHistory.ClosingTime}#, USERID = {updatedOrderHistory.UserId} WHERE ID = {updatedOrderHistory.ID}";
 
             // Add parameters to prevent SQL injection
             LoadParameters(updatedOrderHistory);
