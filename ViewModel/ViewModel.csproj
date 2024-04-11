@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminDB.cs" />
     <Compile Include="BaseDB.cs" />
     <Compile Include="CoinDB.cs" />
     <Compile Include="LogDB.cs" />
