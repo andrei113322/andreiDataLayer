@@ -25,6 +25,10 @@ namespace ViewModel
             user.BirthDate = DateTime.Parse(reader["BIRTHDATE"].ToString());
             user.Email = reader["EMAIL"].ToString();
             user.IsAdmin = Convert.ToBoolean(reader["ISADMIN"].ToString());
+            user.PAndL = double.Parse(reader["P&L"].ToString());
+            user.Ban = bool.Parse(reader["BAN"].ToString());
+            user.Volume = double.Parse(reader["VOLUME"].ToString());
+
 
             return user;
         }
@@ -80,7 +84,7 @@ namespace ViewModel
         public bool UpdateUser(User updatedUser)
         {
             // Assuming you have an appropriate primary key column in your database
-            command.CommandText = $"UPDATE USERS SET USERNAME = '{updatedUser.UserName}', FIRSTNAME = '{updatedUser.FirstName}', SECONDNAME = '{updatedUser.SecondName}', [PASSWORD] = '{updatedUser.Password}', BIRTHDATE = #{updatedUser.BirthDate}#, EMAIL = '{updatedUser.Email}', ISADMIN = {updatedUser.IsAdmin} WHERE iD = {updatedUser.ID}";
+            command.CommandText = $"UPDATE USERS SET USERNAME = '{updatedUser.UserName}', FIRSTNAME = '{updatedUser.FirstName}', SECONDNAME = '{updatedUser.SecondName}', [PASSWORD] = '{updatedUser.Password}', BIRTHDATE = #{updatedUser.BirthDate}#, EMAIL = '{updatedUser.Email}', ISADMIN = {updatedUser.IsAdmin}, BAN = {updatedUser.Ban}, VOLUME = {updatedUser.Volume}, [P&L] = {updatedUser.PAndL} WHERE iD = {updatedUser.ID}";
 
             // Execute the UPDATE command
           return   base.ExecuteCRUD();

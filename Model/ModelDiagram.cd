@@ -3,14 +3,14 @@
   <Class Name="Model.BaseEntity">
     <Position X="6.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAEAAgA=</HashCode>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
       <FileName>BaseEntity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Model.Coin">
     <Position X="3" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAIACAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAACAACAA=</HashCode>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAACAA=</HashCode>
       <FileName>Coin.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -38,7 +38,7 @@
   <Class Name="Model.OrderHistory">
     <Position X="6.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgQJAAAEAQAAgAIACIACAAgAkAABAJAAAQAAAAIACAA=</HashCode>
+      <HashCode>AgQJAAAEAQAAgAIACIQCAAgEkAABAJAAAQAAAAIACAA=</HashCode>
       <FileName>OrderHistory.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -61,6 +61,48 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.Admin">
+    <Position X="1.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAACAAAAAAAAAAAAAAAAAAQAAAIGAAACIgAAACAAA=</HashCode>
+      <FileName>Admin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.AdminList">
+    <Position X="10.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Admin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.Notification">
+    <Position X="3" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAABAAgAAQAIAAAAAEAAAABABAAAAAUAAAIBAA=</HashCode>
+      <FileName>Notification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.NotificationList">
+    <Position X="12.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Notification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.MyCoin">
+    <Position X="1.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAABAAAAAQAACAAAAAgAAAAAQA=</HashCode>
+      <FileName>MyCoin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.MyCoinList">
+    <Position X="13.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MyCoin.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

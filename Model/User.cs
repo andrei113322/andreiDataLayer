@@ -29,6 +29,14 @@ namespace Model
             
         }
 
+        protected bool ban;
+        [DataMember] public bool Ban { get { return ban; } set { ban = value; } }
+
+        protected double volume;
+        [DataMember] public double Volume { get { return volume; } set { volume = value; } }
+
+        protected double pAndL;
+        [DataMember] public double PAndL { get { return pAndL; } set { pAndL = value; } }
 
         protected string userName;
 

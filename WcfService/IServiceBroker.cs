@@ -49,5 +49,8 @@ namespace WcfService
         [OperationContract] NotificationList GetNotificationsByReciever(User user);
         [OperationContract] bool InsertNotification(Notification notification);
 
+        [OperationContract] AdminList SelectAdminData();
+        [OperationContract] bool UpdateAdmin(Admin myAdmin);
+
     }
 }

@@ -195,5 +195,17 @@ namespace WcfService
             NotificationDB db = new NotificationDB();
             return db.InsertNotification(notification);
         }
+
+        public AdminList SelectAdminData()
+        {
+            AdminDB adminDB = new AdminDB();
+            return adminDB.getAdmin();
+        }
+
+        public bool UpdateAdmin(Admin myAdmin)
+        {
+            AdminDB adminDB = new AdminDB();
+            return adminDB.updateAdmin(myAdmin);
+        }
     }
 }

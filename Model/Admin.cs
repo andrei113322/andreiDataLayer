@@ -15,6 +15,8 @@ namespace Model
         private double assets;
         private double liquidations;
         private double profits;
+        private int openPositions;
+        private double transfers;
 
         [DataMember]
         public double Volume { get { return volume; } set { volume = value; } }
@@ -26,6 +28,10 @@ namespace Model
         public double Liquidations { get { return liquidations; } set {liquidations = value; } }
         [DataMember]
         public double Profits { get { return profits; } set { profits = value; } }
+        [DataMember]
+        public int OpenPositions { get { return openPositions; } set { openPositions = value; } }
+        [DataMember]
+        public double Transfers { get { return transfers; } set { transfers = value; } }
     }
 
     [CollectionDataContract]

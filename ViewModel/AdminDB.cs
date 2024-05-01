@@ -17,6 +17,8 @@ namespace ViewModel
             myAdmin.Volume = double.Parse(reader["VOLUME"].ToString());
             myAdmin.Users = int.Parse(reader["USERS"].ToString());
             myAdmin.Liquidations = double.Parse(reader["LIQUIDATIONS"].ToString());
+            myAdmin.OpenPositions = int.Parse(reader["OPENPOSITIONS"].ToString());
+            myAdmin.Transfers = double.Parse(reader["TRANSFERS"].ToString());
             return myAdmin;
         }
 
@@ -27,9 +29,11 @@ namespace ViewModel
             return list;
         }
 
-        public bool updateAdmin()
+        public bool updateAdmin(Admin test)
         {
-            this.command.CommandText = $"";
+            this.command.CommandText = $"UPDATE ADMIN SET VOLUME = {test.Volume}, USERS = {test.Users}, ASSETS = {test.Assets}, LIQUIDATIONS = {test.Liquidations}, PROFITS = {test.Profits}, TRANSFERS = {test.Transfers}, OPENPOSITIONS = {test.OpenPositions}";
+
+            return base.ExecuteCRUD();
         }
 
         protected override void LoadParameters(BaseEntity entity)
