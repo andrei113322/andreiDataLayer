@@ -3,36 +3,57 @@
   <Class Name="ViewModel.BaseDB" Collapsed="true">
     <Position X="3.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAApAAAABAAAAAgQAAAAAAAAAAAASAAA=</HashCode>
+      <HashCode>AIAAAAAAAAAAAApAAAABAAAAAgQAAAAAAAIAAAASEAA=</HashCode>
       <FileName>BaseDB.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ViewModel.CoinDB">
     <Position X="2.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAASAAAAAAAAAEAAAAAgAAAAAAAAAAYAACAAA=</HashCode>
+      <HashCode>AAAAAAAAASAAAAAAAAAEAAAAAgAAAAAAAAAAYAACEAA=</HashCode>
       <FileName>CoinDB.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ViewModel.LogDB">
     <Position X="7.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAIAAAAACAAAAAAAAACAAAAAgAAAAAACAAAIAACAAA=</HashCode>
+      <HashCode>AAAIAAAAACAAAAAAAAACAAAAAgAAAAAACAAAIAACEAA=</HashCode>
       <FileName>LogDB.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ViewModel.OrderHistoryDB">
     <Position X="0.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAACAAAAAAAIAAAAAAAgAAAAAAAAAAIAACAAA=</HashCode>
+      <HashCode>AAAAIAAAACAAAAAAAIAAAAAAAgAAAAAAAAAAIAACEAA=</HashCode>
       <FileName>OrderHistoryDB.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ViewModel.UsersDB">
     <Position X="5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAEAACAAAEAAwAAAAAAAAAAAAACAAA=</HashCode>
+      <HashCode>AAAAgAAAACAAAAAEAACAAAEAAwAAAAAAAAAAAAACEAA=</HashCode>
       <FileName>UsersDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ViewModel.AdminDB">
+    <Position X="5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAABAAACEAA=</HashCode>
+      <FileName>AdminDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ViewModel.NotificationDB">
+    <Position X="2.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAQAAAAAAAAgAAQAAAAAAAAAACEAA=</HashCode>
+      <FileName>NotificationDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ViewModel.MyCoinDB">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAEAAAAAgBAAAAAAAAAQAACEAA=</HashCode>
+      <FileName>MyCoinDB.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

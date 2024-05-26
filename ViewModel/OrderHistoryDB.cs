@@ -71,10 +71,7 @@ namespace ViewModel
         public bool DeleteOrderHistory(int orderHistoryId)
         {
             // Assuming you have an appropriate primary key column in your database
-            command.CommandText = "DELETE FROM ORDERHISTORY WHERE ID = @ID";
-
-            // Add parameters to prevent SQL injection
-            command.Parameters.AddWithValue("@ID", orderHistoryId);
+            command.CommandText = $"DELETE FROM ORDERHISTORY WHERE ID = {orderHistoryId}";
 
             // Execute the DELETE command
           return   base.ExecuteCRUD();

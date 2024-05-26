@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Binance.API.Csharp.Client;
@@ -35,6 +37,28 @@ namespace BinanceCCC
                     result.Add(item, Convert.ToDecimal(tickerPrices.FirstOrDefault(SymbolPrice => SymbolPrice.Symbol == item).Price));
                 }
                 result.Add("USDRUSDT", 1);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+                return null;
+            }
+        }
+
+        public async Task<Dictionary<string, decimal>> getAllCryptos(string coinName)
+        {
+            try
+            {
+                var tickerPrices = await myBClient.GetAllPrices();
+                Dictionary<string, decimal> result = new Dictionary<string, decimal>();
+                foreach (var item in tickerPrices)
+                {
+                    if (item.Symbol == coinName)
+                    {
+                        result.Add(item.Symbol, Convert.ToDecimal(item.Price));
+                    }
+                }
                 return result;
             }
             catch (Exception ex)

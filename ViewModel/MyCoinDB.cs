@@ -65,10 +65,8 @@ namespace ViewModel
         public bool DeleteCoin(MyCoin coinId)
         {
             // Assuming you have an appropriate primary key column in your database
-            command.CommandText = "DELETE FROM WALLET WHERE ID = @ID";
+            command.CommandText = $"DELETE FROM WALLET WHERE USERID = {coinId.User.ID}";
 
-            // Add parameters to prevent SQL injection
-            command.Parameters.AddWithValue("@ID", coinId);
 
             // Execute the DELETE command
            return   base.ExecuteCRUD();

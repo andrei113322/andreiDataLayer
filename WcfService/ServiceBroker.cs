@@ -47,6 +47,12 @@ namespace WcfService
             return connections.GetHistoricalClosingPrices(symbol);
         }
 
+         public Task<Dictionary<string, decimal>> GetAllCryptos(string coinName)
+        {
+            Connections connections = new Connections();
+            return connections.getAllCryptos(coinName);
+        }
+
         public bool InsertCoin(Coin coin)
         {
             CoinDB db = new CoinDB();

@@ -43,6 +43,7 @@ namespace WcfService
         [OperationContract] bool DeleteMyCoin(MyCoin myCoin);
         [OperationContract] Task<Dictionary<string, decimal>> GiveCoinValue(List<string> Value);
         [OperationContract] Task<List<Decimal>> GetHistoricalClosingPrices(string symbol);
+        [OperationContract] Task<Dictionary<string, decimal>> GetAllCryptos(string coinName);
 
 
         [OperationContract] NotificationList GetNotificationsBySender(User user);

@@ -93,10 +93,7 @@ namespace ViewModel
         public bool DeleteUser(int userId)
         {
             // Assuming you have an appropriate primary key column in your database
-            command.CommandText = "DELETE FROM USERS WHERE ID = @ID";
-
-            // Add parameters to prevent SQL injection
-            command.Parameters.AddWithValue("@ID", userId);
+            command.CommandText = $"DELETE FROM USERS WHERE ID = {userId}";
 
             // Execute the DELETE command
           return   base.ExecuteCRUD();
